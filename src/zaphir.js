@@ -2,33 +2,25 @@ import baseImage from "./images/bases/base.png";
 import shortHair from "./images/hair/z-short-hair.png";
 import whiteHair from "./images/hair/white-hair.png";
 import fancy from "./images/full-fit/full-fancy-fit.png";
+import { layer } from "./layers";
 
 export const zaphPage = (function(){
 
     function zaphLoad(id){
         const div = document.getElementById(id);
 
-        const zaphBase = document.createElement("img");
-        zaphBase.src = baseImage;
-        zaphBase.classList.add("base-img");
+        const zaphBase = layer(baseImage, "base-img");
 
         //hairstyles
-        const shortHairStyle = document.createElement("img");
-        shortHairStyle.src = shortHair;
-        shortHairStyle.classList.add("layered-img");
+        const shortHairStyle = layer(shortHair, "layered-img");
         shortHairStyle.classList.add("hair");
-        shortHairStyle.setAttribute("id", "hair-1");
+        
 
-        const whiteHairStyle = document.createElement("img");
-        whiteHairStyle.src = whiteHair;
-        whiteHairStyle.classList.add("layered-img");
+        const whiteHairStyle = layer(whiteHair, "layered-img");
         whiteHairStyle.classList.add("hair");
-        whiteHairStyle.setAttribute("id", "hair-2");
 
         //full outfits
-        const fancyFit = document.createElement("img");
-        fancyFit.src = fancy;
-        fancyFit.classList.add("layered-img");
+        const fancyFit = layer(fancy, "layered-img");
 
         const dressBtn = document.createElement("button");
         const dressBtnText = document.createTextNode("Dress Me!");
@@ -69,7 +61,6 @@ export const zaphPage = (function(){
         });
         
 
-        
     }
 
     return {
