@@ -3,6 +3,7 @@ import shortHair from "./images/hair/z-short-hair.png";
 import whiteHair from "./images/hair/white-hair.png";
 import fancy from "./images/full-fit/full-fancy-fit.png";
 import { layer } from "./layers";
+import { removeElementsByClass } from "./remove-elements";
 
 export const zaphPage = (function(){
 
@@ -29,13 +30,6 @@ export const zaphPage = (function(){
         const hairSwitchBtn = document.createElement("button");
         const hairSwitchBtnText = document.createTextNode("Switch hairstyle");
         hairSwitchBtn.appendChild(hairSwitchBtnText);
-
-        function removeElementsByClass(className) {
-            let elements = document.getElementsByClassName(className);
-            while(elements.length > 0) {
-                elements[0].parentNode.removeChild(elements[0]);
-            }
-        }
 
         let currentHair = 0;
         hairSwitchBtn.addEventListener("click", () => {
