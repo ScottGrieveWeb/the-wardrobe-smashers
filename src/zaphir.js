@@ -23,6 +23,7 @@ export const zaphPage = (function(){
         //full outfits
         const fancyFit = layer(fancy, "layered-img");
 
+        // buttons
         const dressBtn = document.createElement("button");
         const dressBtnText = document.createTextNode("Dress Me!");
         dressBtn.appendChild(dressBtnText);
@@ -31,6 +32,7 @@ export const zaphPage = (function(){
         const hairSwitchBtnText = document.createTextNode("Switch hairstyle");
         hairSwitchBtn.appendChild(hairSwitchBtnText);
 
+        //switches through hairstyles
         let currentHair = 0;
         hairSwitchBtn.addEventListener("click", () => {
             if (currentHair == 0){
