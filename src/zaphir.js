@@ -2,6 +2,8 @@ import baseImage from "./images/bases/base.png";
 import shortHair from "./images/hair/z-short-hair.png";
 import whiteHair from "./images/hair/white-hair.png";
 import fancy from "./images/full-fit/full-fancy-fit.png";
+import armourTop from "./images/top/armour.png";
+import dragonSleeve from "./images/top/dragon-sleeve.png";
 import { layer } from "./layers";
 import { removeElementsByClass } from "./remove-elements";
 
@@ -23,6 +25,13 @@ export const zaphPage = (function(){
         //full outfits
         const fancyFit = layer(fancy, "layered-img");
 
+        //tops
+        const armour = layer(armourTop, "layered-img");
+        armour.classList.add("top");
+        
+        const dragonSleeveTop = layer(dragonSleeve, "layered-img");
+        dragonSleeveTop.classList.add("top");
+
         // buttons
         const dressBtn = document.createElement("button");
         const dressBtnText = document.createTextNode("Dress Me!");
@@ -31,6 +40,10 @@ export const zaphPage = (function(){
         const hairSwitchBtn = document.createElement("button");
         const hairSwitchBtnText = document.createTextNode("Switch hairstyle");
         hairSwitchBtn.appendChild(hairSwitchBtnText);
+
+        const topSwitchBtn = document.createElement("button");
+        const topSwitchBtnText = document.createTextNode("Switch top");
+        topSwitchBtn.appendChild(topSwitchBtnText);
 
         //switches through hairstyles
         let currentHair = 0;
@@ -48,8 +61,24 @@ export const zaphPage = (function(){
             }
         });
 
+        //switches through tops
+        let currentTop = 0;
+        topSwitchBtn.addEventListener("click", () => {
+            if (currentTop == 0){
+                div.appendChild(armour);
+                currentTop = 1;
+            } else if (currentTop == 1){
+                removeElementsByClass("top");
+                div.appendChild(dragonSleeveTop);
+                currentTop = 2;
+            } else {
+                removeElementsByClass("top");
+                currentTop = 0;
+            }
+        });
         div.appendChild(zaphBase);
         div.appendChild(hairSwitchBtn);
+        div.appendChild(topSwitchBtn);
         div.appendChild(dressBtn);
 
         dressBtn.addEventListener("click", () => {
