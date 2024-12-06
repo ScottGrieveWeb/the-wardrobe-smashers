@@ -73,14 +73,15 @@ export const zaphPage = (function(){
         });
 
         //switches through full outfits, removing any currently selected clothes
+        let currentOutfit = 0;
         dressBtn.addEventListener("click", () => {
             if (currentOutfit == 0){
-                div.appendChild(armour);
-                currentOutfit = 1;
-            } else if (currentOutfit == 1){
                 removeElementsByClass("top");
-                div.appendChild(dragonSleeveTop);
-                currentOutfit = 2;
+                div.appendChild(fancyFit);
+                currentOutfit = 1;
+            } else {
+                removeElementsByClass("full-fit");
+                currentOutfit = 0;
             }
         });
         // adds buttons to content div
