@@ -15,34 +15,29 @@ export const zaphPage = (function(){
         const zaphBase = layer(baseImage, "base-img");
 
         //hairstyles
-        const shortHairStyle = layer(shortHair, "layered-img");
-        shortHairStyle.classList.add("hair");
-        
+        const shortHairStyle = layer(shortHair, "layered-img", "hair");
 
-        const whiteHairStyle = layer(whiteHair, "layered-img");
-        whiteHairStyle.classList.add("hair");
+        const whiteHairStyle = layer(whiteHair, "layered-img", "hair");
 
         //full outfits
-        const fancyFit = layer(fancy, "layered-img");
+        const fancyFit = layer(fancy, "layered-img", "full-fit");
 
         //tops
-        const armour = layer(armourTop, "layered-img");
-        armour.classList.add("top");
+        const armour = layer(armourTop, "layered-img", "top");
         
-        const dragonSleeveTop = layer(dragonSleeve, "layered-img");
-        dragonSleeveTop.classList.add("top");
+        const dragonSleeveTop = layer(dragonSleeve, "layered-img", "top");
 
         // buttons
         const dressBtn = document.createElement("button");
-        const dressBtnText = document.createTextNode("Dress Me!");
+        const dressBtnText = document.createTextNode("Full Outfits");
         dressBtn.appendChild(dressBtnText);
 
         const hairSwitchBtn = document.createElement("button");
-        const hairSwitchBtnText = document.createTextNode("Switch hairstyle");
+        const hairSwitchBtnText = document.createTextNode("Hairstyle");
         hairSwitchBtn.appendChild(hairSwitchBtnText);
 
         const topSwitchBtn = document.createElement("button");
-        const topSwitchBtnText = document.createTextNode("Switch top");
+        const topSwitchBtnText = document.createTextNode("Tops");
         topSwitchBtn.appendChild(topSwitchBtnText);
 
         //switches through hairstyles
@@ -76,14 +71,25 @@ export const zaphPage = (function(){
                 currentTop = 0;
             }
         });
+
+        //switches through full outfits, removing any currently selected clothes
+        dressBtn.addEventListener("click", () => {
+            if (currentOutfit == 0){
+                div.appendChild(armour);
+                currentOutfit = 1;
+            } else if (currentOutfit == 1){
+                removeElementsByClass("top");
+                div.appendChild(dragonSleeveTop);
+                currentOutfit = 2;
+            }
+        });
+        // adds buttons to content div
         div.appendChild(zaphBase);
         div.appendChild(hairSwitchBtn);
         div.appendChild(topSwitchBtn);
         div.appendChild(dressBtn);
 
-        dressBtn.addEventListener("click", () => {
-            div.appendChild(fancyFit);
-        });
+        
         
 
     }
