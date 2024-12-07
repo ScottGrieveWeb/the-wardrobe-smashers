@@ -2,8 +2,8 @@ import baseImage from "./images/bases/base.png";
 import shortHair from "./images/hair/z-short-hair.png";
 import whiteHair from "./images/hair/white-hair.png";
 import fancy from "./images/full-fit/full-fancy-fit.png";
-import armourTop from "./images/top/armour.png";
-import dragonSleeve from "./images/top/dragon-sleeve.png";
+import armourTop from "./images/overshirts/armour.png";
+import dragonSleeve from "./images/overshirts/dragon-sleeve.png";
 import { layer } from "./layers";
 import { removeElementsByClass } from "./remove-elements";
 
@@ -89,10 +89,6 @@ export const zaphPage = (function(){
         div.appendChild(hairSwitchBtn);
         div.appendChild(topSwitchBtn);
         div.appendChild(dressBtn);
-
-        
-        
-
     }
 
     return {
