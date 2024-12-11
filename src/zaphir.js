@@ -7,6 +7,9 @@ import dragonSleeve from "./images/overshirts/dragon-sleeve.png";
 import boots from "./images/footwear/boots.png";
 import booties from "./images/footwear/booties.png";
 import slippies from "./images/footwear/slippies.png";
+import blackTrousers from "./images/bottom/black-trousers.png";
+import fancyTrousers from "./images/bottom/fancy-trousers.png";
+import redTrousers from "./images/bottom/red-trousers.png";
 import { layer } from "./layers";
 import { removeElementsByClass } from "./remove-elements";
 
@@ -33,6 +36,11 @@ export const zaphPage = (function(){
         const zaphBooties = layer(booties, "layered-img", "foot");
         const zaphSlippies = layer(slippies, "layered-img", "foot");
 
+        //bottoms
+        const zaphBlackTrousers = layer(blackTrousers, "layered-img", "bottom");
+        const zaphFancyTrousers = layer(fancyTrousers, "layered-img", "bottom");
+        const zaphRedTrousers = layer(redTrousers, "layered-img", "bottom");
+
         // buttons
         const dressBtn = document.createElement("button");
         const dressBtnText = document.createTextNode("Full Outfits");
@@ -45,6 +53,10 @@ export const zaphPage = (function(){
         const topSwitchBtn = document.createElement("button");
         const topSwitchBtnText = document.createTextNode("Tops");
         topSwitchBtn.appendChild(topSwitchBtnText);
+
+        const bottomSwitchBtn = document.createElement("button");
+        const bottomSwitchBtnTxt = document.createTextNode("Bottoms");
+        bottomSwitchBtn.appendChild(bottomSwitchBtnTxt);
 
         const footSwitchBtn = document.createElement("button");
         const footSwitchBtnText = document.createTextNode("Footwear");
@@ -82,6 +94,29 @@ export const zaphPage = (function(){
             }
         });
 
+        //switches through tops
+        let currentBottom = 0;
+        bottomSwitchBtn.addEventListener("click", () => {
+            if (currentBottom == 0){
+                div.appendChild(zaphBlackTrousers);
+
+                currentBottom = 1;
+            } else if (currentBottom == 1){
+                removeElementsByClass("bottom");
+                div.appendChild(zaphFancyTrousers);
+
+                currentBottom = 2;
+            } else if (currentBottom == 2){
+                removeElementsByClass("bottom");
+                div.appendChild(zaphRedTrousers);
+
+                currentBottom = 3;
+            } else {
+                removeElementsByClass("bottom");
+                currentBottom = 0;
+            }
+        });
+
         //switches through footwear
         let currentFoot = 0;
         footSwitchBtn.addEventListener("click", () => {
@@ -108,6 +143,7 @@ export const zaphPage = (function(){
             if (currentOutfit == 0){
                 removeElementsByClass("top");
                 removeElementsByClass("foot");
+                removeElementsByClass("bottom");
                 div.appendChild(fancyFit);
                 currentOutfit = 1;
             } else {
@@ -115,10 +151,13 @@ export const zaphPage = (function(){
                 currentOutfit = 0;
             }
         });
+
+        // TODO Ensure layers are set correctly on Z-Index
         // adds buttons to content div
         div.appendChild(zaphBase);
         div.appendChild(hairSwitchBtn);
         div.appendChild(topSwitchBtn);
+        div.appendChild(bottomSwitchBtn);
         div.appendChild(footSwitchBtn);
         div.appendChild(dressBtn);
     }
