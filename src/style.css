@@ -17,9 +17,22 @@ body {
     position: relative;
     top: 0;
     left: 0;
+    z-index: 0;
 }
 .layered-img {
     height: 800px;
     width: auto;
     position: absolute;
+}
+
+.bottom {
+    z-index: 1;
+}
+
+.top {
+    z-index: 2;
+}
+
+.foot {
+    z-index: 2;
 }
